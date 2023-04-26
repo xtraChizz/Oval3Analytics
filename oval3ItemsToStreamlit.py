@@ -21,9 +21,9 @@ df = load_data(st.secrets["public_gsheets_url"])
 # Print results.
 #st.write(df)
 
-st.write("Top 10 Sell")
+st.write("Top 30 Sell")
 cols = ['blockchain','lastSale.price', 'lastSale.CurrentUSDPrice', 'lastSale.date' ,'tokenId', 'Name', 'Att.Rarity', 'Att.Club', 'Att.Competition', 'Att.Position', 'Att.Serial_number', 'lastSale.buyer']
 dfcols = df[cols]
-top10_Sell = (dfcols.sort_values(by=['lastSale.price'],ascending=False)).head(10)
+top30_Sell = (dfcols.sort_values(by=['lastSale.CurrentUSDPrice'],ascending=False)).head(30)
 
-st.write(top10_Sell)
+st.write(top30_Sell)
