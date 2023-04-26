@@ -23,8 +23,11 @@ dfData = load_data(st.secrets["Oval3DataSource"])
 # Print results.
 #st.write(df)
 
-st.write("Top 30 Sell")
-cols = ['Name', 'Att.Rarity', 'blockchain', 'lastSale.price', 'lastSale.CurrentUSDPrice', 'lastSale.date','tokenId', 'Att.Club', 'Att.Competition', 'Att.Position', 'Att.Serial_number', 'lastSale.buyer']
-df = dfData[cols]
-top30_Sell = df.sort_values(by=['lastSale.CurrentUSDPrice'],ascending=False)
-st.write(dfData)
+
+dfData = dfData.dropna(subset = ["lastSale.CurrentUSDPrice"]) 
+dfData['lastSale.CurrentUSDPrice'] = dfData['lastSale.CurrentUSDPrice'].apply(lambda x: float(x.split()[0].replace(',', '.')))
+
+order_byDate = dfData.sort_values(by=['lastSale.date'],ascending=False)
+top10_Sell = dfData.sort_values(by=['lastSale.CurrentUSDPrice'],ascending=False).head(30)
+ById = dfData.sort_values(by=['tokenId']).head(40)
+st.write(top10_Sell)
