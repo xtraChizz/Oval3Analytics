@@ -27,4 +27,4 @@ st.write("Top 30 Sell")
 cols = ['Name', 'Att.Rarity', 'blockchain', 'lastSale.price', 'lastSale.CurrentUSDPrice', 'lastSale.date','tokenId', 'Att.Club', 'Att.Competition', 'Att.Position', 'Att.Serial_number', 'lastSale.buyer']
 df = dfData[cols]
 top30_Sell = df.sort_values(by=['lastSale.CurrentUSDPrice'],ascending=False)
-st.write(top30_Sell)
+st.write(dfData)
