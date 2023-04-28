@@ -8,59 +8,7 @@ from pandas.api.types import (
 )
 
 ################### Declarations ################
-
-# Read in data from the Google Sheet.
-# Uses st.cache_data to only rerun when the query changes or after 10 min.
-@st.cache_data(ttl=600)
-def load_data(sheets_url):
-    csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
-    return pd.read_csv(csv_url)
-
-
-st.set_page_config(page_title="Search by owner",layout="wide")
-
-
-st.markdown("# Search by owner")
-st.sidebar.header("Search by owner")
-
-dfData = load_data(st.secrets["Oval3DataSource"])
-
-cols = ['Name','Att.Position','Att.Competition','Att.Club', 'Att.Rarity','lastSale.CurrentUSDPrice','lastSale.price', 'blockchain', 'lastSale.date' ,'tokenId', 'Att.Serial_number', 'lastSale.buyer']
-df = dfData[cols]
-
-# Remove nan values
-df = df.dropna(subset = ["lastSale.CurrentUSDPrice"]) 
-################### Visualisation ###################
-
-
-
-# Replace ',' by '.' in price colums
-df['lastSale.price'] = df['lastSale.price'].apply(lambda x: float(x.split()[0].replace(',', '.')))
-df['lastSale.CurrentUSDPrice'] = df['lastSale.CurrentUSDPrice'].apply(lambda x: float(x.split()[0].replace(',', '.')))
-
-#Set tokenId as index
-df.set_index('Name', inplace=True)
-
-#Filters
-#UserAdress = st.text_input("Enter Polygon/Ethereum Adress:")
-
-# Create a list of possible values and multiselect menu with them in it.
-#RARITY = df['Att.Rarity'].unique()
-#RARITY_SELECTED = st.multiselect('Select Rarity', RARITY)
-#
-#order_byDate = df.sort_values(by=['lastSale.date'],ascending=False)
-#ByOwner = df.sort_values(by=['lastSale.buyer'])
-#dfUser = df[df["lastSale.buyer"] == UserAdress]
-#
-## Mask to filter dataframe
-#mask_rarity = dfUser['Att.Rarity'].isin(RARITY_SELECTED)
-#data = dfUser[mask_rarity]
-#st.write(UserAdress)
-#st.write(data)
-
-#df = df[df["lastSale.buyer"] == UserAdress]
-
-
+#Auto-generate dataframe filtering
 def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """
     Adds a UI on top of a dataframe to let viewers filter columns
@@ -135,7 +83,32 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
                     df = df[df[column].astype(str).str.contains(user_text_input)]
 
     return df
+# Read in data from the Google Sheet.
+# Uses st.cache_data to only rerun when the query changes or after 10 min.
+@st.cache_data(ttl=600)
+def load_data(sheets_url):
+    csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
+    return pd.read_csv(csv_url)
+
+dfData = load_data(st.secrets["Oval3DataSource"])
+cols = ['Name','Att.Position','Att.Competition','Att.Club', 'Att.Rarity','lastSale.CurrentUSDPrice','lastSale.price', 'blockchain', 'lastSale.date' ,'tokenId', 'Att.Serial_number', 'lastSale.buyer']
+df = dfData[cols]
+
+# Remove nan values
+df = df.dropna(subset = ["lastSale.CurrentUSDPrice"]) 
+# Replace ',' by '.' in price colums
+df['lastSale.price'] = df['lastSale.price'].apply(lambda x: float(x.split()[0].replace(',', '.')))
+df['lastSale.CurrentUSDPrice'] = df['lastSale.CurrentUSDPrice'].apply(lambda x: float(x.split()[0].replace(',', '.')))
+#Set tokenId as index
+df.set_index('Name', inplace=True)
+################### Visualisation ###################
+st.set_page_config(page_title="Search by owner",layout="wide")
+st.markdown("# Search by owner")
+st.sidebar.header("Search by owner")
+
 
 UserAdress = st.text_input("Enter Polygon/Ethereum Adress:")
+
 dfowner = df[df["lastSale.buyer"] == UserAdress]
+st.write(UserAdress)
 st.dataframe(filter_dataframe(dfowner))
