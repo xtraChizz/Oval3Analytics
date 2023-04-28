@@ -3,6 +3,7 @@ import streamlit as st
 st.set_page_config(
     page_title="welcome",
     page_icon="👋",
+    layout="wide"
 )
 
 st.write("# Welcome to Oval3 Analytics! 👋")

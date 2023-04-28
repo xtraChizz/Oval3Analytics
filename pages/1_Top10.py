@@ -11,7 +11,7 @@ def load_data(sheets_url):
     return pd.read_csv(csv_url)
 
 
-st.set_page_config(page_title="Top 10 Sales")
+st.set_page_config(page_title="Top 10 Sales",layout="wide")
 
 st.markdown("# Top 10 sales")
 st.sidebar.header("Top 10 sales")
