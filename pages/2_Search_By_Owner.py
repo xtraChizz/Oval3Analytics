@@ -137,5 +137,5 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 UserAdress = st.text_input("Enter Polygon/Ethereum Adress:")
-df = df[df["lastSale.buyer"] == UserAdress]
-st.dataframe(filter_dataframe(df))
+dfowner = df[df["lastSale.buyer"] == UserAdress]
+st.dataframe(filter_dataframe(dfowner))
