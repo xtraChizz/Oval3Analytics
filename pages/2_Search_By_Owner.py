@@ -8,6 +8,9 @@ from pandas.api.types import (
 )
 
 ################### Declarations ################
+st.set_page_config(page_title="Search by owner",layout="wide")
+
+
 #Auto-generate dataframe filtering
 def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -86,6 +89,7 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 # Read in data from the Google Sheet.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 @st.cache_data(ttl=600)
+
 def load_data(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url)
@@ -102,7 +106,8 @@ df['lastSale.CurrentUSDPrice'] = df['lastSale.CurrentUSDPrice'].apply(lambda x: 
 #Set tokenId as index
 df.set_index('Name', inplace=True)
 ################### Visualisation ###################
-st.set_page_config(page_title="Search by owner",layout="wide")
+
+
 st.markdown("# Search by owner")
 st.sidebar.header("Search by owner")
 
