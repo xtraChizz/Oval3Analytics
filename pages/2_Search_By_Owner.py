@@ -107,13 +107,10 @@ df['lastSale.CurrentUSDPrice'] = df['lastSale.CurrentUSDPrice'].apply(lambda x: 
 df.set_index('Name', inplace=True)
 ################### Visualisation ###################
 
-
 st.markdown("# Search by owner")
 st.sidebar.header("Search by owner")
 
 
 UserAdress = st.text_input("Enter Polygon/Ethereum Adress:")
-
 dfowner = df[df["lastSale.buyer"] == UserAdress]
-
 st.dataframe(filter_dataframe(dfowner))
