@@ -29,6 +29,15 @@ st.sidebar.success("Select a demo above.")
 #)
 st.markdown(
     """
+    --------------------------------
+
     In construction
+
+    --------------------------------
+
+    This website is not affiliated, associated, authorized, endorsed, sponsored, or connected in any way to the team and official website OVAL3 (https://www.oval3.game/). 
+    The information presented on this website is for informational purposes only and is not intended to replace professional advice or recommendations from the team and official website of OVAL3. 
+    We cannot be held responsible for any use or interpretation of the information presented on this website.
+
 """
 )
