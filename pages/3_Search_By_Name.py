@@ -98,11 +98,15 @@ dfData = load_data(st.secrets["Oval3DataSource"])
 cols = ['Name','Att.Position','Att.Competition','Att.Club', 'Att.Rarity','lastSale.CurrentUSDPrice','lastSale.price', 'blockchain', 'lastSale.date' ,'tokenId', 'Att.Serial_number', 'lastSale.buyer']
 df = dfData[cols]
 
+
+
 # Remove nan values
 #df = df.dropna(subset = ["lastSale.CurrentUSDPrice"]) 
 # Replace ',' by '.' in price colums
 #df['lastSale.price'] = df['lastSale.price'].apply(lambda x: float(x.split()[0].replace(',', '.')))
 #df['lastSale.CurrentUSDPrice'] = df['lastSale.CurrentUSDPrice'].apply(lambda x: float(x.split()[0].replace(',', '.')))
+
+df.set_index('Att.Rarity', inplace=True)
 #Set tokenId as index
 #df.set_index('Name', inplace=True)
 ################### Visualisation ###################
@@ -115,5 +119,7 @@ namelist = df['Name']
 option  = st.selectbox('Choose a name', namelist)
 #st.write('You selected:', option)
 dfname = df[df["Name"] == option]
-st.dataframe(dfname)
+st.dataframe(dfname.style.format(thousands=" "), use_container_width=True)
 #st.dataframe(filter_dataframe(dfname))
+
+#st.write(top10_Sell_Rare.style.format(thousands=" "), use_container_width=True)

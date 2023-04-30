@@ -114,4 +114,6 @@ st.sidebar.header("Search by owner")
 UserAdress = (st.text_input("Enter Polygon/Ethereum Adress:")).lower()
 
 dfowner = df[df["lastSale.buyer"] == UserAdress]
-st.dataframe(filter_dataframe(dfowner))
+st.dataframe(filter_dataframe(dfowner).style.format(thousands=" "), use_container_width=True)
+
+#st.dataframe(dfname.style.format(thousands=" "), use_container_width=True)
