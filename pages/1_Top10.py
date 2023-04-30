@@ -42,6 +42,7 @@ ById = df.sort_values(by=['tokenId']).head(40)
 # Show top 10 
 with tab1:
     top10_Sell = df.sort_values(by=['lastSale.CurrentUSDPrice'],ascending=False).head(10)
+    top10_Sell.index = pd.RangeIndex(start=1, stop=11, step=1)
     st.write("Top 10 All rarity")
     st.write(top10_Sell.style.format(thousands=" "), use_container_width=True)
 
@@ -49,6 +50,7 @@ with tab1:
 with tab2:
     dfunique = df[df["Att.Rarity"] == 'UNIQUE']
     top10_Sell_Unique = dfunique.sort_values(by=['lastSale.CurrentUSDPrice'],ascending=False).head(10)
+    top10_Sell_Unique.index = pd.RangeIndex(start=1, stop=11, step=1)
     st.write("Top 10 Unique ")
     st.write(top10_Sell_Unique.style.format(thousands=" "), use_container_width=True)
 
@@ -56,6 +58,7 @@ with tab2:
 with tab3:
     dfSR= df[df["Att.Rarity"] == 'SUPER RARE']
     top10_Sell_SR = dfSR.sort_values(by=['lastSale.CurrentUSDPrice'],ascending=False).head(10)
+    top10_Sell_SR.index = pd.RangeIndex(start=1, stop=11, step=1)
     st.write("Top 10 Super Rare ")
     st.write(top10_Sell_SR.style.format(thousands=" "), use_container_width=True)
 
@@ -63,6 +66,7 @@ with tab3:
 with tab4:
     dfRare= df[df["Att.Rarity"] == 'RARE']
     top10_Sell_Rare = dfRare.sort_values(by=['lastSale.CurrentUSDPrice'],ascending=False).head(10)
+    top10_Sell_Rare.index = pd.RangeIndex(start=1, stop=11, step=1)
     st.write("Top 10 Rare ")
     st.write(top10_Sell_Rare.style.format(thousands=" "), use_container_width=True)
 
@@ -71,6 +75,7 @@ with tab4:
 with tab5:
     dfLimited= df[df["Att.Rarity"] == 'LIMITED']
     top10_Sell_Limited = dfLimited.sort_values(by=['lastSale.CurrentUSDPrice'],ascending=False).head(10)
+    top10_Sell_Limited.index = pd.RangeIndex(start=1, stop=11, step=1)
     st.write("Top 10 Limited ")
     st.write(top10_Sell_Limited.style.format(thousands=" "), use_container_width=True)
 
