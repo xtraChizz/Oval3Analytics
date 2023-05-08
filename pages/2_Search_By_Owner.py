@@ -112,7 +112,7 @@ st.sidebar.header("Search by owner")
 
 
 UserAdress = (st.text_input("Enter Polygon/Ethereum Adress:")).lower()
-
+st.markdown("""---""")
 
 dfowner = df[df["lastSale.buyer"] == UserAdress]
 dfowner['tokenId'] = pd.to_numeric(dfowner['tokenId'], errors='coerce').fillna(0).astype(int)
@@ -140,6 +140,8 @@ col1.write(f'Cards Unique owned :  {CountUnique}')
 col2.write(f'Invest on Polygon collection   : {SumMatic}   matic')
 col2.write(f'Invest on Ethereum collection  : {Sumeth}     eth')
 col2.write(f'Total Invest curent value in $ : {SumDollar}  dollars')
+
+st.markdown("""---""")
 
 st.dataframe(filter_dataframe(dfowner).style.format(thousands=" "), use_container_width=True)
 
