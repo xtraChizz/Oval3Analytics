@@ -115,18 +115,32 @@ UserAdress = (st.text_input("Enter Polygon/Ethereum Adress:")).lower()
 
 
 dfowner = df[df["lastSale.buyer"] == UserAdress]
+dfowner['tokenId'] = pd.to_numeric(dfowner['tokenId'], errors='coerce').fillna(0).astype(int)
 dfownerpolygon = dfowner[dfowner["blockchain"] == 'POLYGON']
 dfownereth = dfowner[dfowner["blockchain"] == 'ETHEREUM']
 
+CountLimited = len((dfowner[dfowner["Att.Rarity"] == 'LIMITED']).index)
+CountRare = len((dfowner[dfowner["Att.Rarity"] == 'RARE']).index)
+CountSR= len((dfowner[dfowner["Att.Rarity"] == 'SUPER RARE']).index)
+CountUnique= len((dfowner[dfowner["Att.Rarity"] == 'UNIQUE']).index)
 CountUserItems = len(dfowner.index)
-SumMatic = pd.Series(dfownerpolygon['lastSale.price']).sum()
-Sumeth = pd.Series(dfownereth['lastSale.price']).sum()
-SumDollar = pd.Series(dfowner['lastSale.CurrentUSDPrice']).sum()
 
-st.write(f'Cards owned :  {CountUserItems}' )
-st.write(f'Invest on Polygon collection: {SumMatic} matic')
-st.write(f'Invest on Ethereum collection: {Sumeth} eth')
-st.write(f'Total Invest curent value in $: {SumDollar} dollars')
+SumMatic = round((pd.Series(dfownerpolygon['lastSale.price']).sum()),2)
+Sumeth = round((pd.Series(dfownereth['lastSale.price']).sum()),2)
+SumDollar = round((pd.Series(dfowner['lastSale.CurrentUSDPrice']).sum()),2)
+
+col1, col2 = st.columns(2)
+
+col1.write(f'Cards owned :  {CountUserItems}')
+col1.write(f'Cards Limited owned :  {CountLimited}')
+col1.write(f'Cards Rare owned :  {CountRare}')
+col1.write(f'Cards Super Rare owned :  {CountSR}')
+col1.write(f'Cards Unique owned :  {CountUnique}')
+
+col2.write(f'Invest on Polygon collection   : {SumMatic}   matic')
+col2.write(f'Invest on Ethereum collection  : {Sumeth}     eth')
+col2.write(f'Total Invest curent value in $ : {SumDollar}  dollars')
+
 st.dataframe(filter_dataframe(dfowner).style.format(thousands=" "), use_container_width=True)
 
 #st.dataframe(dfname.style.format(thousands=" "), use_container_width=True)

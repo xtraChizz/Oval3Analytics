@@ -42,5 +42,9 @@ st.markdown(
     The information presented on this website is for informational purposes only and is not intended to replace professional advice or recommendations from the team and official website of OVAL3. 
     We cannot be held responsible for any use or interpretation of the information presented on this website.
 
+    --------------------------------
+
+    If you love my work, send me a tip : 0x8552Ff37243a38e29e86cdF7aD845591Ff7B9b78
+
 """
 )
