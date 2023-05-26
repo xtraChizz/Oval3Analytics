@@ -35,15 +35,24 @@ st.markdown(
 
     Oval3 is a fantasy Rugby game where you can collect, play, and win official digital player cards, to use them in an immersive gaming experience around Rugby.
 
-    Official link : https://www.oval3.game/
-    Official Tweeter : https://twitter.com/Oval3_game?s=20&t=NcqQ1gUx19s8J_KMvV0_fQ
-    Official Discord : https://discord.gg/R2p8Y9z3jr
-    Official Instagram : https://www.instagram.com/oval3_game/
+    Official link : 
+    https://www.oval3.game/
 
+    Official Tweeter :
+    https://twitter.com/Oval3_game?s=20&t=NcqQ1gUx19s8J_KMvV0_fQ
+
+    Official Discord : 
+    https://discord.gg/R2p8Y9z3jr
+
+    Official Instagram : 
+    https://www.instagram.com/oval3_game/
+
+    
     
     Others communauty tools:
 
     https://docs.google.com/spreadsheets/d/e/2PACX-1vQJxMmUE6tfehjQ4FVSFlXfJ4C1eucLOBGpczVghDpoh4SikYuoH5RW1ENdfEWBVW6fwnqu7ib3awo4/pubhtml?gid=356302602&single=true
+    
     https://dune.com/antoineb35/oval3
 
 
