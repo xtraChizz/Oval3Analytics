@@ -18,7 +18,7 @@ st.sidebar.header("Top 10 sales")
 
 dfData = load_data(st.secrets["Oval3DataSource"])
 
-cols = ['Name','Att.Rarity','score','blockchain','lastSale.price', 'lastSale.CurrentUSDPrice', 'lastSale.date' ,'tokenId',   'Att.Club', 'Att.Competition', 'Att.Position', 'Att.Serial_number', 'lastSale.buyer']
+cols = ['Name','Att.Rarity','Score','blockchain','lastSale.price', 'lastSale.CurrentUSDPrice', 'lastSale.date' ,'tokenId',   'Att.Club', 'Att.Competition', 'Att.Position', 'Att.Serial_number', 'lastSale.buyer']
 df = dfData[cols]
 
 # Remove nan values
