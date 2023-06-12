@@ -102,7 +102,7 @@ df['lastSale.date'] =  pd.to_datetime(df['lastSale.date'], format='%d-%m-%Y %H:%
 #dfData['tokenId'] = pd.to_numeric(dfData['tokenId'], errors='coerce').fillna(0).astype(int)
 #df.set_index('tokenId', inplace=True)
 
-cols = ['Name','lastSale.date','Att.Position','Att.Competition','Att.Club', 'Att.Rarity','lastSale.CurrentUSDPrice','lastSale.price', 'blockchain', 'Att.Serial_number', 'lastSale.buyer']
+cols = ['Name','Score','lastSale.date','Att.Position','Att.Competition','Att.Club', 'Att.Rarity','lastSale.CurrentUSDPrice','lastSale.price', 'blockchain', 'Att.Serial_number', 'lastSale.buyer']
 df = df[cols]
 
 df = df.sort_values(by=['lastSale.date'], ascending = False)

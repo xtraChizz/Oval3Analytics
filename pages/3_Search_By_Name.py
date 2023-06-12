@@ -97,7 +97,7 @@ def load_data(sheets_url):
 dfData = load_data(st.secrets["Oval3DataSource"])
 dfData['tokenId'] = pd.to_numeric(dfData['tokenId'], errors='coerce').fillna(0).astype(int)
 
-cols = ['Name','Att.Position','Att.Competition','Att.Club', 'Att.Rarity','lastSale.CurrentUSDPrice','lastSale.price', 'blockchain', 'lastSale.date' ,'tokenId', 'Att.Serial_number', 'lastSale.buyer']
+cols = ['Name','Score','Att.Position','Att.Competition','Att.Club', 'Att.Rarity','lastSale.CurrentUSDPrice','lastSale.price', 'blockchain', 'lastSale.date' ,'tokenId', 'Att.Serial_number', 'lastSale.buyer']
 df = dfData[cols]
 
 

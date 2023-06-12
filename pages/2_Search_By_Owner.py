@@ -95,7 +95,7 @@ def load_data(sheets_url):
     return pd.read_csv(csv_url)
 
 dfData = load_data(st.secrets["Oval3DataSource"])
-cols = ['Name','Deck.Position','Att.Position','Att.Competition','Att.Club', 'Att.Rarity','lastSale.CurrentUSDPrice','lastSale.price', 'blockchain', 'lastSale.date' ,'tokenId', 'Att.Serial_number', 'lastSale.buyer']
+cols = ['Name','Score','Deck.Position','Att.Position','Att.Competition','Att.Club', 'Att.Rarity','lastSale.CurrentUSDPrice','lastSale.price', 'blockchain', 'lastSale.date' ,'tokenId', 'Att.Serial_number', 'lastSale.buyer']
 df = dfData[cols]
 
 # Remove nan values
